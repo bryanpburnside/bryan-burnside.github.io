@@ -21,9 +21,11 @@
 
 function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
-    
-    
-    
+    let container = ""; //create a variable to act as an empty "string container" to hold the reversed letters of the input string
+    for(let i = input.length - 1; i >= 0; i--) { // create a for loop, and iterate backwards over the input string
+      container += input[i]; // add each letter to container as input is iterated through
+    }
+    return container;
     
     // YOUR CODE GOES ABOVE HERE //
 }
