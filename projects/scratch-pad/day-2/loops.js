@@ -12,9 +12,9 @@
  */
 function printArrayValues(array) {
   // YOUR CODE BELOW HERE //
-  
-  
-  
+  for(var i = 0; i < array.length; i++) { // loop forward through array
+  console.log(array[i]); // print array values
+  }
   
   // YOUR CODE ABOVE HERE //
 }
@@ -26,7 +26,9 @@ function printArrayValues(array) {
 function printArrayValuesInReverse(array) {
   // YOUR CODE BELOW HERE //
   
-  
+  for(var i = array.length - 1; i >= 0; i--) { // loop backwards through array
+    console.log(array[i]); // print array values
+  }
   
   
   // YOUR CODE ABOVE HERE //
@@ -38,7 +40,7 @@ function printArrayValuesInReverse(array) {
 function getObjectKeys(object) {
   // YOUR CODE BELOW HERE //
   
-  
+  return Object.keys(object); // Object.keys() takes an object and returns an array containing its keys
   
   
   // YOUR CODE ABOVE HERE //
@@ -51,7 +53,9 @@ function getObjectKeys(object) {
 function printObjectKeys(object) {
   // YOUR CODE BELOW HERE //
   
-  
+  for(var key in object) { // loop through object
+    console.log(key); // print keys
+  }
   
   
   // YOUR CODE ABOVE HERE //
@@ -62,10 +66,11 @@ function printObjectKeys(object) {
  */
 function getObjectValues(object) {
   // YOUR CODE BELOW HERE //
-  
-  
-  
-  
+  var array = []; // container array
+  for(var key in object) { // loop through object
+    array.push(object[key]); // push values to container array
+  }
+  return array; // return array of object's values
   // YOUR CODE ABOVE HERE //
 }
 
@@ -76,7 +81,9 @@ function getObjectValues(object) {
 function printObjectValues(object) {
   // YOUR CODE BELOW HERE //
   
-  
+  for(var key in object) { // loops through object
+    console.log(object[key]); // prints values
+  }
   
   
   // YOUR CODE ABOVE HERE //
@@ -88,7 +95,7 @@ function printObjectValues(object) {
 function getObjectLength(object) {
   // YOUR CODE BELOW HERE //
   
-  
+  return Object.keys(object).length; // returns the length of an object
   
   
   // YOUR CODE ABOVE HERE //
@@ -100,10 +107,13 @@ function getObjectLength(object) {
  */
 function printObjectValuesInReverse(object) {
   // YOUR CODE BELOW HERE //
-  
-  
-  
-  
+  var values = []; // empty array to act as container for values
+  for(var key in object) { // loops through object
+    values.push(object[key]); // pushes values to container array
+  }
+  for(var i = values.length - 1; i >= 0; i--) { // loops through container array in reverse
+    console.log(values[i]); // prints values in reverse
+  }
   // YOUR CODE ABOVE HERE //
 }
 
