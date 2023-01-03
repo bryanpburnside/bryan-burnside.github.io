@@ -13,8 +13,17 @@
 function fizzBuzz() {
     // YOUR CODE GOES BELOW HERE //
 
-
-
+    for(var i = 1; i <= 100; i++) { // loops from 1-100
+        if (i % 3 === 0 && i % 5 === 0) { // if multiples of 3 and 5
+            console.log("FizzBuzz"); // prints "FizzBuzz"
+        } else if (i % 5 === 0) { // if multiple of 5
+            console.log("Buzz"); // prints "Buzz"
+        } else if (i % 3 === 0) { // if multiple of 3 
+            console.log("Fizz"); // prints "Fizz"
+        } else { // otherwise
+            console.log(i); // prints the number
+        }
+    }
     // YOUR CODE GOES ABOVE HERE //
 }
 
