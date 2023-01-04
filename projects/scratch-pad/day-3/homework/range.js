@@ -24,9 +24,17 @@
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
     
-    
-    
-    
+    const collection = []; // collection array to hold integers between params
+    if (start < end) { // if the start comes before the end
+        for(let i = start; i <= end; i++) { // loop forwards through all integers from start to end
+            collection.push(i); // push integers to collection array
+        }
+    } else { // otherwise, the start must be higher than the end, so
+        for(let j = start; j >= end; j--) { // loop backwards through all integers from start to end 
+            collection.push(j); // push integers to collection array
+        }
+    }
+    return collection; // return the collection array holding the range of integers
     // YOUR CODE GOES ABOVE HERE //
 }
 
