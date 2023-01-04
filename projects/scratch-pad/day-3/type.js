@@ -15,7 +15,11 @@
 function isArray(value) {
     // YOUR CODE BELOW HERE //
     
-    
+    if(Array.isArray(value) === true) { // is the value an array?
+        return true; // if yes, return true
+    } else { // otherwise
+        return false; // return false
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -32,7 +36,17 @@ function isArray(value) {
 function isObject(value) {
     // YOUR CODE BELOW HERE //
     
-    
+    if (Array.isArray(value) === true) { // is the value an array?
+        return false; // if yes, it is not an object
+    } else if (value === null) { // is the value null?
+        return false; // if yes, it is not an object
+    } else if (value instanceof Date === true) { // is the value a date?
+        return false; // if yes, it is not an object
+    } else if (typeof value !== "object") { // is the value not an object?
+        return false; // if yes, it is not an object
+    } else { // otherwise
+        return true; // it is an object
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -47,7 +61,15 @@ function isObject(value) {
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
     
-    
+    if (value === null) { // is the value equal to null?
+        return false; // if yes, it is not an object or array
+    } else if (value instanceof Date === true) { // is the value equal to date?
+        return false; // if yes, it is not an object or array
+    } else if (typeof value !== "object") { // is the value not equal to object?
+        return false; // if yes, it is not an object
+    } else { //otherwise
+        return true; // it is an array or object
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -74,7 +96,19 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
-    
+    if (typeof value === 'string') { // is the value a string?
+        return 'string'; // if yes, return string
+    } else if (typeof value === 'number') { // is value a number?
+        return 'number'; // if yes, return number
+    } else if (Array.isArray(value) === true) { // is the value an array?
+        return 'array'; // if yes, return array
+    } else if (value === null) { // is the value null?
+        return 'null'; // if yes, return null
+    } else if (value instanceof Date === true) { // is the value a date?
+        return 'date'; // if yes, return date
+    } else if (typeof value === 'function') { // is the value a function?
+        return 'function'; // if yes, return function
+    }
     
     
     
