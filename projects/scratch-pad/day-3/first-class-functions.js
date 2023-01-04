@@ -14,7 +14,13 @@
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
     
-    
+    return function tester(value) { // function to test value
+        if (value > base) { // is value is greater than base?
+            return true; // if yes, return true
+        } else { // otherwise
+            return false; // return false
+        }
+    } 
     
     
     // YOUR CODE ABOVE HERE //
@@ -28,7 +34,13 @@ function createGreaterThanFilter(base) {
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
     
-    
+    return function tester(value) { // function to test value
+        if (value < base) { // is value less than base?
+            return true; // if yes, return true
+        } else { // otherwise
+            return false; // return false
+        }
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -42,7 +54,13 @@ function createLessThanFilter(base) {
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
     
-    
+    return function tester(string) { // function to test string
+        if(string[0].toUpperCase() === startsWith.toUpperCase()) { // is the first value of the string is the same as startsWith (regardless of case)?
+            return true; // if yes, return true
+        } else { // otherwise
+            return false; // return false
+        }
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -56,7 +74,13 @@ function createStartsWithFilter(startsWith) {
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
     
-    
+    return function tester(string) { // function to test a string
+        if(string[string.length - 1].toUpperCase() === endsWith.toUpperCase()) { // is the last value of the string is the same as startsWith (regardless of case)? 
+            return true; // if yes, return true
+        } else { // otherwise
+            return false; // return false
+        }
+    }    
     
     
     // YOUR CODE ABOVE HERE //
@@ -72,8 +96,11 @@ function createEndsWithFilter(endsWith) {
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
     
-    
-    
+    const collection = []; // an array to collect the modified strings
+    for(let i = 0; i < strings.length; i++) { // looping over the strings array
+        collection.push(modify(strings[i])); // pushing modified strings to collection array
+    }
+    return collection; // returning the collection of modified strings
     
     // YOUR CODE ABOVE HERE //
 }
@@ -90,8 +117,17 @@ function modifyStrings(strings, modify) {
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
     
-    
-    
+    const checked = []; // array to check if any tested strings do not pass
+    for(let i = 0; i < strings.length; i++) { // looping over the strings array
+        if(test(strings[i]) === false) { // checking if the strings do not pass the test
+            checked.push(strings[i]); // if not, push the strings to the checked array
+        }
+    }
+    if (checked.length === 0) { // if the checked array has no length
+        return true; // return true (all tests passed)
+    } else { // otherwise
+        return false; // return false
+    }
     
     // YOUR CODE ABOVE HERE //
 }
