@@ -34,8 +34,12 @@
  */
 
 // YOUR CODE GOES BELOW HERE //
-function makeContact(id, nameFirst, nameLast) {
-
+function makeContact(id, nameFirst, nameLast) { // function to create contact
+    return { // returns a contact object
+        id: id,
+        nameFirst: nameFirst,
+        nameLast: nameLast
+    }
 } 
 
 
@@ -43,12 +47,39 @@ function makeContactList() {
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts;
+    var contacts = [];
     
     return {
         // we implemented the length api for you //
-        length: function() {
-            return contacts.length;
+        length: function() { // factory function to find how many contacts are in the contacts array
+            return contacts.length; // returns the length of the contacts array
+        },
+        addContact: function(contact) { // factory function to add a contact
+            contacts.push(contact); // pushes contact into the contacts array
+        },
+        findContact: function(fullName) { // factory function which takes a full name string
+            for(let i = 0; i < contacts.length; i++) { // loops through the contacts array
+                if(contacts[i].nameFirst + " " + contacts[i].nameLast === fullName) { // if the contacts first and last name with a space in the middle equals fullName
+                    return contacts[i]; // return the contact
+                } else { // otherwise
+                    return undefined; // returns undefined
+                }
+            }
+        },
+        removeContact: function(contact) { // factory function which takes a contact object
+            for(let i = 0; i < contacts.length; i++) { // loops through contacts array
+                if(contacts[i] === contact) { // if that contact exists
+                    contacts.shift(contacts[i]); // delete the contact from the contacts array
+                }
+            }
+        },
+        printAllContactNames: function() { // factory function to print all contact names
+            let collection = []; // array to hold all first and last names
+            for(let i = 0; i < contacts.length; i++) { // loops through the contacts array
+                collection.push(contacts[i].nameFirst + " " + contacts[i].nameLast); // pushing all first and last names to collection array
+            }
+            const joined = collection.join("\n"); // variable to contain the joined string of the collection array separated with line breaks
+            return joined; // returning of the contact list string
         }
     }
 }
