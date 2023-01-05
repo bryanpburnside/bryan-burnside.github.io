@@ -69,7 +69,7 @@ function makeContactList() {
         removeContact: function(contact) { // factory function which takes a contact object
             for(let i = 0; i < contacts.length; i++) { // loops through contacts array
                 if(contacts[i] === contact) { // if that contact exists
-                    contacts.shift(contacts[i]); // delete the contact from the contacts array
+                    contacts.splice(contacts[i], 1); // delete the contact from the contacts array
                 }
             }
         },
