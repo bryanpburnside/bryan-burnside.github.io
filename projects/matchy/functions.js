@@ -17,10 +17,9 @@ function search(aniArray, aniName) {
     for(var i = 0; i < aniArray.length; i++) {
         if(aniArray[i].name === aniName) {
             return aniArray[i];
-        } else {
-            return null;
-        }
+        } 
     }
+    return null;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -55,6 +54,8 @@ function add(aniArray, aniObject) {
     for(var i = 0; i < aniArray.length; i++) {
         if(aniObject.name.length > 0 && aniObject.species.length > 0 && aniArray[i].name !== aniObject.name) {
             aniArray.push(aniObject);
+        } else {
+            return null;
         }
     }
 }
