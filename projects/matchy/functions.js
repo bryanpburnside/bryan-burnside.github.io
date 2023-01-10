@@ -9,31 +9,55 @@
  * and read every instruction carefully.
  */
 
-const { animals } = require("./data");
-
 //////////////////////////////////////////////////////////////////////
 // Step 1 - Search ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-
+function search(aniArray, aniName) {
+    for(var i = 0; i < aniArray.length; i++) {
+        if(aniArray[i].name === aniName) {
+            return aniArray[i];
+        } else {
+            return null;
+        }
+    }
+}
 
 //////////////////////////////////////////////////////////////////////
 // Step 2 - Replace //////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-
+function replace(aniArray, aniName, aniReplacement) {
+    for(var i = 0; i < aniArray.length; i++) {
+        if(aniArray[i].name === aniName) {
+            aniArray.splice(aniArray[i], 1, aniReplacement);
+        }
+    }
+}
 
 //////////////////////////////////////////////////////////////////////
 // Step 3 - Remove ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-
+function remove(aniArray, aniName) {
+    for(var i = 0; i < aniArray.length; i++) {
+        if(aniArray[i].name === aniName) {
+            aniArray.splice(aniArray[i], 1);
+        }
+    }    
+}
 
 //////////////////////////////////////////////////////////////////////
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-
+function add(aniArray, aniObject) {
+    for(var i = 0; i < aniArray.length; i++) {
+        if(aniObject.name.length > 0 && aniObject.species.length > 0 && aniArray[i].name !== aniObject.name) {
+            aniArray.push(aniObject);
+        }
+    }
+}
 
 /**
  * You did it! You're all done with Matchy!
