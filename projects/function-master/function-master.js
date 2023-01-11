@@ -104,7 +104,12 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-
+    if(Array.isArray(object.noises) === false || object.noises <= 0) { // if object.noises is not an array OR is an empty array
+        return 'there are no noises'; // return there are no noises
+    } else { // otherwise
+        let string = object.noises.join(' '); // set a string equal to the noises array strings joined by a space 
+        return string; // return the string
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
