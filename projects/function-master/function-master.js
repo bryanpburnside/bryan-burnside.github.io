@@ -3,11 +3,11 @@
 //////////////////////////////////////////////////////////////////////
 
 function objectValues(object) {
-    let array = []; 
-    for(let key in object) {
-        array.push(object[key]);
+    let array = []; // create an array variable to hold our object's values
+    for(let key in object) { // loop through object
+        array.push(object[key]); // push the values to our array
     }
-    return array;
+    return array; // return the array
 } 
 
 //////////////////////////////////////////////////////////////////////
@@ -15,26 +15,26 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
-    let array = [];
-    for(let key in object) {
-        array.push(key);
+    let array = []; // create an array variable to hold the key values
+    for(let key in object) { // loop through object
+        array.push(key); // push key values to object
     }
-    let string = array.join(" ");
-    return string;
+    let string = array.join(" "); // set a string variable equal to the array of keys joined as one string with spaces between each key
+    return string; // return our string variable
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 3 - Values to String /////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function valuesToString(object) {
-    let array = [];
-    for(let key in object) {
-        if(typeof object[key] === 'string')
-        array.push(object[key]);
+function valuesToString(object) { 
+    let array = []; // an array to collect the string values from the object
+    for(let key in object) { // loop through the object
+        if(typeof object[key] === 'string') // if the value is a string
+        array.push(object[key]); // push that value to our array
     }
-    let string = array.join(" ");
-    return string;
+    let string = array.join(" "); // create a string variable that can be set to the array joined as a string
+    return string; // return the string variable
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -42,10 +42,10 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
-    if(Array.isArray(collection) === true) {
-        return 'array';
-    } else {
-        return 'object';
+    if(Array.isArray(collection) === true) { // if our collection is an array
+        return 'array'; // return array
+    } else { // otherwise
+        return 'object'; // return object
     }
 }
 
@@ -54,11 +54,11 @@ function arrayOrObject(collection) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeWord(string) {
-    let modified = string[0].toUpperCase();
-    for(var i = 1; i < string.length; i++) {
-        modified += string[i];
+    let modified = string[0].toUpperCase(); // set a variable to the first letter of the string we wish to modify and capitalize it
+    for(var i = 1; i < string.length; i++) { // loop through the string, but set our index to 1, so we skip the initial letter
+        modified += string[i]; // add the remaining letters of the string to our modified string
     }
-    return modified;
+    return modified; // return our modified string
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -66,13 +66,13 @@ function capitalizeWord(string) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeAllWords(string) {
-    let array = string.split(" ");
-    let modified = [];
-    for(let i = 0; i < array.length; i++) {
-        modified.push(array[i].charAt(0).toUpperCase() + array[i].slice(1));
+    let array = string.split(" "); // create an array variable and set it to our string split at each space
+    let modified = []; // create another array to take the modified string values
+    for(let i = 0; i < array.length; i++) { // loop through the first array we created
+        modified.push(array[i].charAt(0).toUpperCase() + array[i].slice(1)); // capitalize the first letter of each string and push it to our modified array
     }
-    let restringed = modified.join(" ");
-    return restringed;
+    let restringed = modified.join(" "); // create a new string variable and set it to our modified array joined with a space
+    return restringed; // return the new string
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -80,9 +80,9 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
-    for(let key in object) {
-        if(key === "name") {
-            return "Welcome " + object[key].charAt(0).toUpperCase() + object[key].slice(1, object[key].length) + "!";
+    for(let key in object) { // loop through the object
+        if(key === "name") { // if a key in the object equals the string of name
+            return "Welcome " + object[key].charAt(0).toUpperCase() + object[key].slice(1, object[key].length) + "!"; // return Welcome + the name key's value capitalized + !
         }
     }
 }
@@ -92,9 +92,9 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-    for(let key in object) {
-        if(object.name.length > 0 && object.species.length > 0) {
-            return object.name.charAt(0).toUpperCase() + object.name.slice(1, object.name.length) + " is a " + object.species.charAt(0).toUpperCase() + object.species.slice(1, object.species.length);
+    for(let key in object) { // loop through the object
+        if(object.name.length > 0 && object.species.length > 0) { // if the keys of name and species exist
+            return object.name.charAt(0).toUpperCase() + object.name.slice(1, object.name.length) + " is a " + object.species.charAt(0).toUpperCase() + object.species.slice(1, object.species.length); // return their name capitalized + is a + their species capitalized
         }
     }
 }
