@@ -162,8 +162,14 @@ function isFriend(name, object) { // isFriend() : Should take a name and an obje
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function nonFriends(name, array) {
-    
+function nonFriends(name, array) { // Should take a name and a list of people, and return a list of all the names that <name> is not friends with
+ var notFriends = []; // new array of non-friends
+    for(let i = 0; i < array.length; i++) { // loop through array of people objects
+        if(array[i].friends.includes(name) === false && array[i].name !== name) { // if the friends array of the person object does not include the name argument and the person object is not the name argument's person object
+            notFriends.push(array[i].name); // push the name of the person not friends with the name to the notFriends array
+        }
+    }
+    return notFriends; // return the notFriends array
 }
 
 //////////////////////////////////////////////////////////////////////
