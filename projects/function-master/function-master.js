@@ -117,23 +117,45 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-
+    var check = ""; // a string to push the word from the string to if it matches the word
+    var array = string.split(" "); // turning the string to an array to be looped through
+    for(let i = 0; i < array.length; i++) { // looping through our string array
+        if(array[i] === word) { // checking to see if any words in the array match the word
+            check += array[i]; // and if so, adding them to the check string
+        }
+    }
+    if(check === word) { // if the check string matches the word
+        return true; // return true
+    } else { // otherwise
+        return false; // the word is not in the string, so return false
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 11 - Add Friend //////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function addFriend (name, object) {
-
+function addFriend (name, object) {  // Should take a name and an object and add the name to the object's friends array then return the object
+    object.friends.push(name); // add the name to the friend array in the object
+    return object; // return the object
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 12 - Is Friend ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function isFriend(name, object) {
-
+function isFriend(name, object) { // isFriend() : Should take a name and an object and return true if <name> is a friend of <object> and false otherwise
+    var areTheyFriends = false; // check to see if the name is in the friends array is true or false
+    if(Array.isArray(object.friends) === false) { // first an if-statement to rule out edge case objects with no friend's array
+        return false; // return false if no array of friends
+    } else { // otherwise
+        for(let i = 0; i < object.friends.length; i++) { // loop through friends array
+            if(object.friends[i] === name) { // if a friend's name matches the name argument
+                areTheyFriends = true; // set areTheyFriends to true
+            }
+        }
+    }    
+    return areTheyFriends; // areTheyFriends will return false if no names match, and will return true if a friend's name does match
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -141,7 +163,7 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
-
+    
 }
 
 //////////////////////////////////////////////////////////////////////
