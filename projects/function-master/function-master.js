@@ -175,27 +175,47 @@ function nonFriends(name, array) { // Should take a name and a list of people, a
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
-function updateObject(object, key, value) {
-
+// Should take an object, a key and a value. Should update the property <key> on <object> with new <value>. If <key> does not exist on <object> create it
+function updateObject(object, key, value) { 
+        object[key] = value; // update value at key, or create key and set its value 
+        return object // return object
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 15 - Remove Properties ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+// Should take an object and an array of strings. Should remove any properties on <object> that are listed in <array>
 function removeProperties(object, array) {
-
+    for(let key in object) { // loop through object
+        for(let i = 0; i < array.length; i++) { //loop through array
+            if(key === array[i]) { // if the key of the object matches an element of the array
+                delete object[key]; // delete that object property
+            }
+        }
+    }    
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 16 - Dedup ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function dedup(array) {
-
+function dedup(array) { // Should take an array and return an array with all the duplicates removed
+    let result = []; // create an empty array to hold unique array elements
+    for(let i = 0; i < array.length; i++) { // loop through array
+        isDuplicateFound = false; // this variable keeps track of duplicates
+        for(let j = i + 1; j < array.length; j++) { // loop through array at the element next to the element at i
+            if(array[j] === array[i]) { // if there is a duplicate
+                isDuplicateFound = true; // break the inner loop
+                break;
+            }
+        }
+        if(isDuplicateFound) { // if a duplicate is found after inner loop breaks, continue with the next iteration of outer loop
+            continue;
+        }
+        result.push(array[i]); // push current element to result array
+    }
+    return result; // return result array
 }
-
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
