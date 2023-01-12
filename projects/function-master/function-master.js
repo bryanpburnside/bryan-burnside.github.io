@@ -199,22 +199,35 @@ function removeProperties(object, array) {
 // Function 16 - Dedup ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function dedup(array) { // Should take an array and return an array with all the duplicates removed
-    let result = []; // create an empty array to hold unique array elements
-    for(let i = 0; i < array.length; i++) { // loop through array
-        isDuplicateFound = false; // this variable keeps track of duplicates
-        for(let j = i + 1; j < array.length; j++) { // loop through array at the element next to the element at i
-            if(array[j] === array[i]) { // if there is a duplicate
-                isDuplicateFound = true; // break the inner loop
-                break;
-            }
+// using only for loops
+
+// function dedup(array) { // Should take an array and return an array with all the duplicates removed
+//     let result = []; // create an empty array to hold unique array elements
+//     for(let i = 0; i < array.length; i++) { // loop through array
+//         isDuplicateFound = false; // this variable keeps track of duplicates
+//         for(let j = i + 1; j < array.length; j++) { // loop through array at the element next to the element at i
+//             if(array[j] === array[i]) { // if there is a duplicate
+//                 isDuplicateFound = true; // break the inner loop
+//                 break;
+//             }
+//         }
+//         if(isDuplicateFound) { // if a duplicate is found after inner loop breaks, continue with the next iteration of outer loop
+//             continue;
+//         }
+//         result.push(array[i]); // push current element to result array
+//     }
+//     return result; // return result array
+// }
+
+// using .includes
+function dedup(array) {
+    let noDupes = []; // create an array to hold all array items without the duplicates
+    for(let i = 0; i < array.length; i++) { // loop through the array
+        if(!noDupes.includes(array[i])) { // if our new array does not contain an element from the argument array
+            noDupes.push(array[i]) // push that element to our new array
         }
-        if(isDuplicateFound) { // if a duplicate is found after inner loop breaks, continue with the next iteration of outer loop
-            continue;
-        }
-        result.push(array[i]); // push current element to result array
     }
-    return result; // return result array
+    return noDupes; // return the new array
 }
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////

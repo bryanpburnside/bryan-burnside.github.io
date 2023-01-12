@@ -32,7 +32,7 @@ function fizzBuzz(start, end) { // function takes a start param and an end param
 ////////////////////////////////////////////////////////////////////////////////
 
 function drawChessboard(rows) {
-  let combined = '' // the combined odd/even characters to form the chessboard
+  let combined = ''; // the combined odd/even characters to form the chessboard
   let evenPos = ' '; // starting character if the row/char pos is even (i.e. pos [1, 1])
   let oddPos = '#'; // starting character if the row/char pos is odd (i.e. pos [1, 2])
   for(let i = 1; i <= rows; i++) { // loop to handle rows
