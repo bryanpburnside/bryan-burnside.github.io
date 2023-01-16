@@ -190,9 +190,9 @@ _.each = function(collection, callback) {
         for(let i = 0; i < collection.length; i++) {
             callback(collection[i], i, collection) 
         }
-    } else if(typeof collection === 'object') {
-        for(let keys in collection) {
-            callback(collection[keys], keys, collection)
+    } else {
+        for(let key in collection) {
+            callback(collection[key], key, collection)
         }
     }
 }
@@ -207,6 +207,13 @@ _.each = function(collection, callback) {
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+_.unique = function(array) {
+    let unique = [];
+    for(let i = 0; i < array.length; i++) {
+        array.indexOf(array[i]) === i ? unique.push(array[i]) : null
+    }
+    return unique;
+}
 
 /** _.filter
 * Arguments:
@@ -224,6 +231,13 @@ _.each = function(collection, callback) {
 *   use _.each in your implementation
 */
 
+_.filter = function(array, test) {
+    let filtered = [];
+    for(let i = 0; i < array.length; i++) {
+        test(array[i], i, array) ? filtered.push(array[i]) : null;
+    }
+    return filtered;
+}
 
 /** _.reject
 * Arguments:
@@ -238,6 +252,13 @@ _.each = function(collection, callback) {
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
+_.reject = function(array, test) {
+    let rejected = [];
+    for(let i = 0; i < array.length; i++) {
+        !test(array[i], i, array) ? rejected.push(array[i]) : null;
+    }
+    return rejected;
+}
 
 /** _.partition
 * Arguments:
@@ -258,6 +279,14 @@ _.each = function(collection, callback) {
 }
 */
 
+_.partition = function(array, test) {
+    let partitionedT = [];
+    let partitionedF = [];
+    for(let i = 0; i < array.length; i++) {
+        test(array[i], i, array) ? partitionedT.push(array[i]) : partitionedF.push(array[i]);
+    }
+    return [partitionedT, partitionedF];
+}
 
 /** _.map
 * Arguments:
@@ -275,6 +304,19 @@ _.each = function(collection, callback) {
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+_.map = function(collection, callback) {
+    let mapped = [];
+    if(Array.isArray(collection)) {
+        for(let i = 0; i < collection.length; i++) {
+           mapped.push(callback(collection[i], i, collection));
+        }
+    } else {
+        for(let key in collection) {
+            mapped.push(callback(collection[key], key, collection));
+        }
+    }
+    return mapped;
+}
 
 /** _.pluck
 * Arguments:
@@ -286,6 +328,7 @@ _.each = function(collection, callback) {
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
+
 
 
 /** _.every
@@ -310,6 +353,7 @@ _.each = function(collection, callback) {
 */
 
 
+
 /** _.some
 * Arguments:
 *   1) A collection
@@ -332,6 +376,7 @@ _.each = function(collection, callback) {
 */
 
 
+
 /** _.reduce
 * Arguments:
 *   1) An array
@@ -352,6 +397,7 @@ _.each = function(collection, callback) {
 */
 
 
+
 /** _.extend
 * Arguments:
 *   1) An Object
@@ -366,6 +412,8 @@ _.each = function(collection, callback) {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
