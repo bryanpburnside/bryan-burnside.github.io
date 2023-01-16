@@ -21,6 +21,9 @@ var _ = {};
 *   _.identity({a: "b"}) === {a: "b"}
 */
 
+_.identity = function(value) {
+    return value;
+} 
 
 /** _.typeOf
 * Arguments:
@@ -42,6 +45,25 @@ var _ = {};
 * _.typeOf([1,2,3]) -> "array"
 */
 
+_.typeOf = function(value) {
+    if(typeof value === 'string') {
+        return 'string';
+    } else if(Array.isArray(value) === true) {
+        return 'array';
+    } else if(value === null) {
+        return 'null';
+    } else if(typeof value === 'number') {
+        return 'number';
+    } else if(typeof value === 'boolean') {
+        return 'boolean'
+    } else if(value === undefined) {
+        return 'undefined';
+    } else if(typeof value === 'object') {
+        return 'object';
+    } else if (typeof value === 'function') {
+        return 'function';
+    }
+}
 
 /** _.first
 * Arguments:
@@ -61,6 +83,17 @@ var _ = {};
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
 
+_.first = function(array, number) {
+    if(Array.isArray(array) === false || number < 0) {
+        return [];
+    } else if(number === undefined || typeof number !== 'number') {
+        return array[0];
+    } else if(array.length < number) {
+        return array;
+    } else {
+        return array.slice(0, number);
+    }
+}
 
 /** _.last
 * Arguments:
@@ -80,6 +113,17 @@ var _ = {};
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function(array, number) {
+    if(Array.isArray(array) === false || number < 0) {
+        return [];
+    } else if(number === undefined || typeof number !== 'number') {
+        return array[array.length - 1];
+    } else if(array.length < number) {
+        return array;
+    } else {
+        return array.slice(array.length - number, array.length);
+    }
+}
 
 /** _.indexOf
 * Arguments:
@@ -97,6 +141,14 @@ var _ = {};
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
+_.indexOf = function(array, value) {
+    for(let i = 0; i < array.length; i++) {
+        if(array[i] === value) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** _.contains
 * Arguments:
@@ -113,6 +165,9 @@ var _ = {};
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+_.contains = function(array, value) {
+       return(array.includes(value) ? true : false);
+}
 
 /** _.each
 * Arguments:
@@ -130,6 +185,17 @@ var _ = {};
 *      -> should log "a" "b" "c" to the console
 */
 
+_.each = function(collection, callback) {
+    if(Array.isArray(collection)) {
+        for(let i = 0; i < collection.length; i++) {
+            callback(collection[i], i, collection) 
+        }
+    } else if(typeof collection === 'object') {
+        for(let keys in collection) {
+            callback(collection[keys], keys, collection)
+        }
+    }
+}
 
 /** _.unique
 * Arguments:
