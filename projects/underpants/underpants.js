@@ -3,7 +3,7 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
-const { result } = require("lodash");
+//const { result } = require("lodash");
 
 var _ = {};
 
@@ -360,12 +360,15 @@ _.pluck = function(array, property) {
 */
 
 _.every = function(collection, callback) {
-    if(!callback) { // if there is no callback function passed
-        for(let i = 0; i < collection.length; i++) { // loop through the collection
-            return collection[i] ? true : false  // and return true if all of the elements are truthy, and otherwise, return false
+    if(Array.isArray(collection)) { // if the collection is an array
+        if(!callback) { // if there is no callback function
+            for(let i = 0; i < collection.length; i++) { // loop through the collection
+                if(!collection[i]) { // if the element is falsey
+                    return false; // return false
+                }
+            }
+            return true; // otherwise, it is true
         }
-    }
-    else if(Array.isArray(collection)) { // if the collection is an array
         for(let i = 0; i < collection.length; i++) { // loop through the collection
             if(!callback(collection[i], i, collection)) { // if the function resolves to false
                 return false; // return false
@@ -373,6 +376,14 @@ _.every = function(collection, callback) {
         }
         return true; // otherwise, everything has passed and the loop has completed, so return true
     } else { // if the collection is an object 
+        if(!callback) { // if there is no callback function
+            for(let key in collection) { // loop through the collection
+                if(!collection[i]) { // if the element is falsey
+                    return false; // return false
+                }
+            }
+            return true; // otherwise, it is true
+        }
         for(let key in collection) { // loop through the collection
             if(!callback(collection[key], key, collection)) { // if the function resolves to false
                 return false; // return false
@@ -404,25 +415,36 @@ _.every = function(collection, callback) {
 */
 
 _.some = function(collection, callback) {
-    if(!callback) { // if there is no callback function passed
-        for(let i = 0; i < collection.length; i++) { // loop through the collection
-            return collection[i] ? true : false  // and return true if some of the elements are truthy, and otherwise, return false
+    if(Array.isArray(collection)) { // if the collection is an array
+        if(!callback) { // if there is no callback function
+            for(let i = 0; i < collection.length; i++) { // loop through the collection
+                if(collection[i]) { // if the element is truthy
+                    return true; // return true
+                }
+            }
+            return false; // otherwise, it is false
         }
-    }
-    else if(Array.isArray(collection)) { // if the collection is an array
         for(let i = 0; i < collection.length; i++) { // loop through the collection
             if(callback(collection[i], i, collection)) { // if the function resolves to true
                 return true; // return true
-            } 
+            }
         }
-        return false; // otherwise the loop has completed and the function has never resolved to true, so return false
+        return false; // otherwise, everything has passed and the loop has completed, so return false
     } else { // if the collection is an object 
+        if(!callback) { // if there is no callback function
+            for(let key in collection) { // loop through the collection
+                if(collection[i]) { // if the element is truthy
+                    return true; // return true
+                }
+            }
+            return false; // otherwise, it is false
+        }
         for(let key in collection) { // loop through the collection
             if(callback(collection[key], key, collection)) { // if the function resolves to true
                 return true; // return true
-            } 
+            }
         }
-        return false; // otherwise the loop has completed and the function has never resolved to true, so return false
+        return false; // otherwise, everything has passed and the loop has completed, so return false
     }
 }
 
@@ -445,17 +467,17 @@ _.some = function(collection, callback) {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
-// _.reduce = function(array, callback, seed) {
-//     let result = callback();
-//     for(let i = 0; i < array.length; i++) {
-//         if(!seed) {
-//             return callback(callback(seed, array[i], i), array[i], i);
-//         } else {
-//             result = callback(result, array[i]);
-//         }
-//     }
-//     return result;
-// }
+_.reduce = function(array, callback, seed) {
+    let result = callback();
+    for(let i = 0; i < array.length; i++) {
+        if(!seed) {
+            return callback(callback(seed, array[i], i), array[i], i);
+        } else {
+            result = callback(result, array[i]);
+        }
+    }
+    //return result;
+}
 
 /** _.extend
 * Arguments:
@@ -472,6 +494,9 @@ _.some = function(collection, callback) {
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
 
+_.extend = function(object, ...objects) {
+    return Object.assign(object, ...objects);
+}
 
 
 //////////////////////////////////////////////////////////////////////

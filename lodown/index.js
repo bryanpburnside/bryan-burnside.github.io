@@ -5,8 +5,8 @@
 /**
  * identity: Returns input value unchanged.
  * 
- * @param {Any value}: Function takes a value.
- * @returns {Any value}: Function returns input value unchanged
+ * @param {Any Value}: Function takes a value.
+ * @returns {Any Value}: Function returns input value unchanged
  */
 function identity(value) {
     return value;
@@ -16,8 +16,8 @@ module.exports.identity = identity;
 /**
  * typeOf: Returns a string representing type of input value.
  * 
- * @param {Any value}: Function takes a value.
- * @returns {string}: Function returns string of type of input value.
+ * @param {Any Value}: Function takes a value.
+ * @returns {String}: Function returns string of type of input value.
  */
 
 function typeOf(value) {
@@ -44,9 +44,9 @@ module.exports.typeOf = typeOf;
 /**
  * first: Returns the first element or elements in array.
  * 
- * @param {an array}: Function takes an array.
- * @param {a number}: Function takes a number.
- * @returns {array}: If the array argument passed is not an array, returns []  
+ * @param {An Array}: Function takes an array.
+ * @param {A Number}: Function takes a number.
+ * @returns {Array}: If the array argument passed is not an array, returns []  
  * If the number argument passed is not given or not a number, it returns just the first element in array.
  * Otherwise, returns the specified number of elements, starting with the first.
  */
@@ -67,9 +67,9 @@ module.exports.first = first;
 /**
  * last: Returns the last element or elements in array.
  * 
- * @param {an array}: Function takes an array.
- * @param {a number}: Function takes a number.
- * @returns {array}: If the array argument passed is not an array, returns []  
+ * @param {An Array}: Function takes an array.
+ * @param {A Number}: Function takes a number.
+ * @returns {Array}: If the array argument passed is not an array, returns []  
  * If the number argument passed is not given or not a number, it returns just the last element in array.
  * Otherwise, returns the specified number of elements, starting with the last.
  */
@@ -123,7 +123,7 @@ module.exports.contains = contains;
  * action Function to each value in the collection.
  * 
  * @param {Array or Object} collection: The collection over which to iterate.
- * @param {Function} action: The Function to be applied to each value in the 
+ * @param {Function} action: The function to be applied to each value in the 
  * collection
  */
 function each(collection, action) {
@@ -251,30 +251,41 @@ function pluck(array, property) {
     })
     return plucked; // return new array
 }
-module.exports.plucked = plucked
+module.exports.pluck = pluck
 
 /**
  * every: Designed to loop over a collection, Array or Object, and tests that all elements
  * in the function are true or false. If any are false, it returns false, otherwise it returns true.
  * @param {Array or Object} collection: The collection over which to iterate.
  * @param {Function} action: The Function to be applied to each value in the collection.
- * @returns {Array}: Returns true or false
+ * @returns {Boolean}: Returns true or false
  */
 
-_.every = function(collection, callback) {
-    if(!callback) {
-        for(let i = 0; i < collection.length; i++) {
-            return collection[i] ? true : false 
+function every(collection, callback) {
+    if(Array.isArray(collection)) { 
+        if(!callback) { 
+            for(let i = 0; i < collection.length; i++) { 
+                if(!collection[i]) { 
+                    return false; 
+                }
+            }
+            return true; 
         }
-    }
-    else if(Array.isArray(collection)) {
-        for(let i = 0; i < collection.length; i++) {
-            if(!callback(collection[i], i, collection)) {
+        for(let i = 0; i < collection.length; i++) { 
+            if(!callback(collection[i], i, collection)) { 
                 return false;
             }
         }
         return true;
-    } else {
+    } else { 
+        if(!callback) { 
+            for(let key in collection) { 
+                if(!collection[i]) { 
+                    return false; 
+                }
+            }
+            return true;
+        }
         for(let key in collection) {
             if(!callback(collection[key], key, collection)) {
                 return false;
@@ -284,3 +295,69 @@ _.every = function(collection, callback) {
     }
 }
 module.exports.every = every
+
+/**
+ * some: Designed to loop over a collection, Array or Object, and tests that all elements
+ * in the function are true or false. If any are true, it returns true, otherwise it returns false.
+ * @param {Array or Object} collection: The collection over which to iterate.
+ * @param {Function} action: The Function to be applied to each value in the collection.
+ * @returns {Boolean}: Returns true or false
+ */
+function some(collection, callback) {
+    if(Array.isArray(collection)) { 
+        if(!callback) { 
+            for(let i = 0; i < collection.length; i++) { 
+                if(collection[i]) { 
+                    return true; 
+                }
+            }
+            return false; 
+        }
+        for(let i = 0; i < collection.length; i++) { 
+            if(callback(collection[i], i, collection)) { 
+                return true; 
+            }
+        }
+        return false; 
+    } else { 
+        if(!callback) { 
+            for(let key in collection) { 
+                if(collection[i]) { 
+                    return true; 
+                }
+            }
+            return false; 
+        }
+        for(let key in collection) { 
+            if(callback(collection[key], key, collection)) { 
+                return true; 
+            }
+        }
+        return false; 
+    }
+}
+module.exports.some = some
+
+/**
+ * reduce: 
+ * @param {Array} collection: The collection over which to iterate.
+ * @param {Function} action: The Function to be applied to each value in the collection.
+ * @param {Seed}: 
+ * @returns {}: Returns true or false
+ */
+function reduce(array, callback, seed) {
+
+}
+
+module.exports.reduce = reduce
+
+/**
+ * extend: 
+ * @param {Object} collection: The starting object.
+ * @param {Object(s)} collection(s): Any number of additional objects.
+ * @returns {Object}: Returns the first object combined with any additional object arguments properties.
+ */
+_.extend = function(object, ...objects) {
+    return Object.assign(object, ...objects);
+}
+module.exports.extend = extend
