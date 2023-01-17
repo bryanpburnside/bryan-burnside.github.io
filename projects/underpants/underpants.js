@@ -3,6 +3,8 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
+const { result } = require("lodash");
+
 var _ = {};
 
 
@@ -329,7 +331,12 @@ _.map = function(collection, callback) {
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
-
+_.pluck = function(array, property) {
+    let plucked = array.map(function(array) { //loops through the array
+       return array[property]; // adds property values to new array
+    })
+    return plucked; // return new array
+}
 
 /** _.every
 * Arguments:
@@ -352,7 +359,28 @@ _.map = function(collection, callback) {
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
-
+_.every = function(collection, callback) {
+    if(!callback) { // if there is no callback function passed
+        for(let i = 0; i < collection.length; i++) { // loop through the collection
+            return collection[i] ? true : false  // and return true if all of the elements are truthy, and otherwise, return false
+        }
+    }
+    else if(Array.isArray(collection)) { // if the collection is an array
+        for(let i = 0; i < collection.length; i++) { // loop through the collection
+            if(!callback(collection[i], i, collection)) { // if the function resolves to false
+                return false; // return false
+            }
+        }
+        return true; // otherwise, everything has passed and the loop has completed, so return true
+    } else { // if the collection is an object 
+        for(let key in collection) { // loop through the collection
+            if(!callback(collection[key], key, collection)) { // if the function resolves to false
+                return false; // return false
+            }
+        }
+        return true; // otherwise, everything has passed and the loop has completed, so return true
+    }
+}
 
 /** _.some
 * Arguments:
@@ -375,7 +403,28 @@ _.map = function(collection, callback) {
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
-
+_.some = function(collection, callback) {
+    if(!callback) { // if there is no callback function passed
+        for(let i = 0; i < collection.length; i++) { // loop through the collection
+            return collection[i] ? true : false  // and return true if some of the elements are truthy, and otherwise, return false
+        }
+    }
+    else if(Array.isArray(collection)) { // if the collection is an array
+        for(let i = 0; i < collection.length; i++) { // loop through the collection
+            if(callback(collection[i], i, collection)) { // if the function resolves to true
+                return true; // return true
+            } 
+        }
+        return false; // otherwise the loop has completed and the function has never resolved to true, so return false
+    } else { // if the collection is an object 
+        for(let key in collection) { // loop through the collection
+            if(callback(collection[key], key, collection)) { // if the function resolves to true
+                return true; // return true
+            } 
+        }
+        return false; // otherwise the loop has completed and the function has never resolved to true, so return false
+    }
+}
 
 /** _.reduce
 * Arguments:
@@ -396,7 +445,17 @@ _.map = function(collection, callback) {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
-
+// _.reduce = function(array, callback, seed) {
+//     let result = callback();
+//     for(let i = 0; i < array.length; i++) {
+//         if(!seed) {
+//             return callback(callback(seed, array[i], i), array[i], i);
+//         } else {
+//             result = callback(result, array[i]);
+//         }
+//     }
+//     return result;
+// }
 
 /** _.extend
 * Arguments:

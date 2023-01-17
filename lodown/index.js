@@ -236,3 +236,51 @@ function map(collection, callback) {
     return mapped;
 }
 module.exports.map = map
+
+/**
+ * plucked: Designed to loop over an array of objects, and add the values of the
+ * objects properties to a new array, then returns the new array.
+ * @param {Array or Object} collection: The collection over which to iterate.
+ * @param {Property}: The property of the object
+ * @returns {Array}: Returns new array
+ */
+
+function pluck(array, property) {
+    let plucked = array.map(function(array) { //loops through the array
+       return array[property]; // adds property values to new array
+    })
+    return plucked; // return new array
+}
+module.exports.plucked = plucked
+
+/**
+ * every: Designed to loop over a collection, Array or Object, and tests that all elements
+ * in the function are true or false. If any are false, it returns false, otherwise it returns true.
+ * @param {Array or Object} collection: The collection over which to iterate.
+ * @param {Function} action: The Function to be applied to each value in the collection.
+ * @returns {Array}: Returns true or false
+ */
+
+_.every = function(collection, callback) {
+    if(!callback) {
+        for(let i = 0; i < collection.length; i++) {
+            return collection[i] ? true : false 
+        }
+    }
+    else if(Array.isArray(collection)) {
+        for(let i = 0; i < collection.length; i++) {
+            if(!callback(collection[i], i, collection)) {
+                return false;
+            }
+        }
+        return true;
+    } else {
+        for(let key in collection) {
+            if(!callback(collection[key], key, collection)) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+module.exports.every = every
