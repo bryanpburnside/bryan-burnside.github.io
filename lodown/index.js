@@ -109,8 +109,8 @@ module.exports.indexOf = indexOf;
  * contains: Checks an array to see if a value is contained in it.
  * Returns true if the array contains the value and false if not.
  * 
- * @param {Array} collection: The collection over which to iterate.
- * @param {Value}: A value we would like to check for in the array.
+ * @param {Array} collection: The collection we would like to check.
+ * @param {Any Value}: Any value we would like to check for in the array.
  * @returns {Boolean}: If the array includes the value, returns true, otherwise it returns false.
  */
  function contains(array, value) {
@@ -238,7 +238,7 @@ function map(collection, callback) {
 module.exports.map = map
 
 /**
- * plucked: Designed to loop over an array of objects, and add the values of the
+ * pluck: Designed to loop over an array of objects, and add the values of the
  * objects properties to a new array, then returns the new array.
  * @param {Array or Object} collection: The collection over which to iterate.
  * @param {Property}: The property of the object
@@ -339,21 +339,36 @@ function some(collection, callback) {
 module.exports.some = some
 
 /**
- * reduce: 
+ * reduce: Reduce takes a function that loops through an array and 
+ * builds a value by repeatedly taking a single element
+ * from the array and combining it with the current value.
  * @param {Array} collection: The collection over which to iterate.
  * @param {Function} action: The Function to be applied to each value in the collection.
- * @param {Seed}: 
- * @returns {}: Returns true or false
+ * @param {Any Value}: A seed value / accumulator 
+ * @returns {Any Value}: Returns accumulated value of seed, or a numeric value if no seed is given
  */
 function reduce(array, callback, seed) {
-
+    let result; 
+    if(seed === undefined) {
+        result = array[0] 
+        for(let i = 1; i < array.length; i++) {
+            result = callback(result, array[i], i, array);
+        }
+    } else {
+        result = seed;
+        for(let i = 0; i < array.length; i++) {
+           result = callback(result, array[i], i, array);
+        }
+    }
+return result;
 }
 
 module.exports.reduce = reduce
 
 /**
- * extend: 
- * @param {Object} collection: The starting object.
+ * extend: A function which takes a target object as its first parameter and then any number of additional objects
+ * as it's other parameters to be copied into the target object, which it then returns
+ * @param {Object} collection: The starting / target object.
  * @param {Object(s)} collection(s): Any number of additional objects.
  * @returns {Object}: Returns the first object combined with any additional object arguments properties.
  */

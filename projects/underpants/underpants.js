@@ -468,15 +468,19 @@ _.some = function(collection, callback) {
 */
 
 _.reduce = function(array, callback, seed) {
-    let result = callback();
-    for(let i = 0; i < array.length; i++) {
-        if(!seed) {
-            return callback(callback(seed, array[i], i), array[i], i);
-        } else {
-            result = callback(result, array[i]);
+    let result; // create our result variable
+        if(seed === undefined) { //determine if no seed
+            result = array[0] // set result equal to the 0 index of the array
+            for(let i = 1; i < array.length; i++) { // begin looping through the array at 1
+                result = callback(result, array[i], i, array); // set result equal to the callback function
+            }
+        } else { // otherwise there is a seed
+            result = seed; // set result equal to our seed (with seed acting as our start position)
+            for(let i = 0; i < array.length; i++) { // begin looping over the array at 0
+               result = callback(result, array[i], i, array); // set result equal to the callback function 
+            }
         }
-    }
-    //return result;
+    return result; // return the result
 }
 
 /** _.extend
