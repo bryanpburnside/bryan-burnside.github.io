@@ -3,7 +3,7 @@
 'use strict';
 
 var customers = require('./data/customers.json');
-var _ = require(/* Replace this with the name of your lodown! */);
+var _ = require('underbar');
 
 /**
  * 1. Import your lodown module using the require() method,
@@ -16,26 +16,70 @@ var _ = require(/* Replace this with the name of your lodown! */);
  *
  * 4. To test your work, run the following command in your terminal:
  *
- *    npm start --prefix ./<YOUR_GITHUB_FOLDER/projects/let-s-get-functional
+ *    npm start --prefix ./bryan-burnside.github.io/projects/let-s-get-functional
  *
  *    IMPORTANT: Make sure you replace <YOUR_GITHUB_FOLDER with your actual github folder name that is in your workspace.
  */
 
 var maleCount = function(array) {
-
+   return _.filter(array, customer => customer.gender === 'male').length;
 };
 
-var femaleCount;
+var femaleCount = function(array) {
+    let females = _.reduce(array, function(accumulator, current) {
+        return current.gender === 'female' ? accumulator += 1 : accumulator;
+   }, 0);
+   return females;
+}
 
-var oldestCustomer;
+var oldestCustomer = function(array) {
+    return _.reduce(array, function(accumulator, current) {
+        if(accumulator.age < current.age) {
+            return current;
+        } else {
+            return accumulator;
+        }
+    }).name
+    
+}
 
-var youngestCustomer;
+var youngestCustomer = function(array) {
+    return _.reduce(array, function(accumulator, current) {
+        if(accumulator.age > current.age) {
+            return current;
+        } else {
+            return accumulator;
+        }
+    }).name
+    
+}
 
-var averageBalance;
+var averageBalance = function(array) {
+    let modified = array.map(function(customer) {
+        return customer.balance.slice(1, 2) + customer.balance.slice(3);
+    })
+    let balances = modified.reduce(function(accumulator, current) {
+        return parseFloat(accumulator) + parseFloat(current);
+    }, 0)
+    return balances / modified.length;
+}
 
-var firstLetterCount;
+var firstLetterCount = function(array, letter) {
+  let tester = _.filter(array, function(customer) {
+       return customer.name.startsWith(letter.toUpperCase());
+    });
+    return tester.length;
+}
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter) {
+    // array.forEach(function(customer){
+
+    // })
+    // let tester = _.filter(array, function(customer, i) {
+    //     return customer.name = customer && customer.friends[i].startsWith(letter.toUpperCase())
+    //  });
+    //  return tester.length;
+}
 
 var friendsCount;
 
