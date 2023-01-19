@@ -66,19 +66,21 @@ var averageBalance = function(array) {
 
 var firstLetterCount = function(array, letter) {
   let tester = _.filter(array, function(customer) {
-       return customer.name.startsWith(letter.toUpperCase());
+       return customer.name[0] === letter.toUpperCase();
     });
     return tester.length;
 }
 
 var friendFirstLetterCount = function(array, customer, letter) {
-    // array.forEach(function(customer){
-
-    // })
-    // let tester = _.filter(array, function(customer, i) {
-    //     return customer.name = customer && customer.friends[i].startsWith(letter.toUpperCase())
-    //  });
-    //  return tester.length;
+    let filtered;
+    array.forEach(function(customers){
+        if(customers.name === customer) {
+            return customers.friends.filter(function(friendNames) {
+                return friendNames[0] === letter.toUpperCase();
+            }).length
+        }
+    })
+    //return filtered.length;
 }
 
 var friendsCount;
