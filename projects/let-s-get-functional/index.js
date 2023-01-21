@@ -72,18 +72,26 @@ var firstLetterCount = function(array, letter) {
 }
 
 var friendFirstLetterCount = function(array, customer, letter) {
-    let filtered;
+    let filtered = [];
     array.forEach(function(customers){
         if(customers.name === customer) {
-            return customers.friends.filter(function(friendNames) {
-                return friendNames[0] === letter.toUpperCase();
-            }).length
+            customers.friends.forEach(function(friendNames) {
+                return friendNames.name[0] === letter.toUpperCase() ? filtered.push(friendNames) : null
+            })
         }
     })
-    //return filtered.length;
+    return filtered.length;
 }
 
-var friendsCount;
+var friendsCount = function(array, name) {
+    let friendArray = [];
+    array.forEach(function(customer) {
+      customer.friends.forEach(function(friendsNames) {
+        return friendsNames.name === name ? friendArray.push(customer.name) : null;
+      })
+    })
+    return friendArray;
+  }
 
 var topThreeTags;
 
