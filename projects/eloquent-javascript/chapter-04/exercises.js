@@ -23,7 +23,13 @@ function range(start, end, step = 1) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function sum(array) {
-  
+  if(array.length === 0) { // if the array is empty
+    return 0; // return 0
+  }
+  if(array.length === 1) { // if the array length equals one
+    return array[0]; // return that element
+  }
+  return array[0] + sum(array.slice(1)); // return the first element + every other element (as slice will remove the current element on each recursive loop)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -31,7 +37,11 @@ function sum(array) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function reverseArray(array) {
-
+  let newArray = [];
+  for(let i = array.length - 1; i >= 0; i--) {
+    newArray.push(array[i]);
+  }
+  return newArray;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -39,7 +49,9 @@ function reverseArray(array) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function reverseArrayInPlace(array) {
-
+  for(let i = 0; i < array.length; i++) { // loop through the array
+    array.splice(i, 0, array.pop()); // replace the current index with the last element on each iteration until the entire array is reversed
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -63,7 +75,7 @@ function listToArray(object) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function prepend(number, array) {
-  Array.prototype.unshift.apply([number], array);
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
