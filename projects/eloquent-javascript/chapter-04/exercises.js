@@ -59,22 +59,31 @@ function reverseArrayInPlace(array) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function arrayToList(array) {
-
+  let list = null; // set list equal to null
+  for(let i = array.length - 1; i >= 0; i--) { // iterate through array in reverse
+    list = {value: array[i], rest: list}; // on each iteration reset the value of list to an object containing the value set to the current array element, and rest set to list
+  }
+  return list; // return list
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray(object) {
-
+function listToArray(object, output = []) {
+  if(object.rest === null) { // if the rest equals null, there are no more rest objects
+    output.push(object.value); // so push the last value to the output array
+    return output; // and return the output
+  }
+  output.push(object.value); // push the current value to the output array
+  return listToArray(object.rest, output); // recursively call the function on the rest object
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend(number, array) {
+function prepend(number, list) {
 
 }
 
