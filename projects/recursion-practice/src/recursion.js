@@ -220,31 +220,36 @@ var reverseArr = function (array, output = []) {
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
-var buildList = function(value, length, output = []) {
-  if(length === 0) {
-    return output;
+var buildList = function(value, length, output = []) { // call the function, but add an output array for out values
+  if(length === 0) { // base: if length equals zero
+    return output; // return the output array
   }
-  output.push(value);
-  length--;
-  return buildList(value, length, output);
+  output.push(value); // each recursive call we will: push the value to output
+  length--; // decrement length
+  return buildList(value, length, output); // and return the function of value, length, and output
 };
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
-var countOccurrence = function(array, value, output = []) {
-  if(array.length === 0) {
-    return output.length;
+var countOccurrence = function(array, value, output = []) { // call the function but add an output array param
+  if(array.length === 0) { // base: if the array length equals zero
+    return output.length; // return the length of the output array
   }
-  if(array[0] === value) {
-    output.push(array[0]);
+  if(array[0] === value) { // if the current array element equals the value argued
+    output.push(array[0]); // put that value to the output array
   }
-  return countOccurrence(array.slice(1), value, output);
+  return countOccurrence(array.slice(1), value, output); // return the function, but slice the current array element from the array
 };
 
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
-var rMap = function(array, callback) {
+var rMap = function(array, callback, output = []) { // call function, but add an output array
+  if(array.length === 0) { // base: if the array length equals zero
+    return output; // return the output array
+  }
+  output.push(callback(array[0])); // push the callback of the current array element to the output array
+  return rMap(array.slice(1), callback, output); // return the function, but slice the current element from the array
 };
 
 // 21. Write a function that counts the number of times a key occurs in an object.
@@ -279,18 +284,37 @@ var fibonacci = function(n) {
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
-var nthFibo = function(n) {
+var nthFibo = function(n, output = [0, 1]) {
+  if(n < 0) { // base: if n is neg
+    return null; // return null
+  }
+  if(n === 0) { // base 2: if n equals zero
+    return output[0]; // return 0
+  }
+  output.push(output[0] + output[1]); // put the value of adding the first and second array values to the output array 
+  return nthFibo(n - 1, output.slice(1)); // decrement n, and slice the first value from the array 
 };
+
 
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
-var capitalizeWords = function(input) {
+var capitalizeWords = function(input, output = []) { // call function but add output array param
+  if(input.length === 0) { // base: if the length of the input array is zero
+    return output; // return the output array
+  }
+  output.push(input[0].toUpperCase()); // push the current input to uppercase into the output array
+  return capitalizeWords(input.slice(1), output); // return the function, but slice the current input array element
 };
 
 // 27. Given an array of strings, capitalize the first letter of each index.
 // capitalizeFirst(['car', 'poop', 'banana']); // ['Car', 'Poop', 'Banana']
-var capitalizeFirst = function(array) {
+var capitalizeFirst = function(array, output = []) { // call function, but add output param
+  if(array.length === 0) { // if array's length equals zero
+    return output; // return the output array
+  }
+  output.push(array[0].slice(0, 1).toUpperCase() + array[0].slice(1)); // push the first letter of the current array ele to uppercase + the rest of the letters
+  return capitalizeFirst(array.slice(1), output); // return the function, but slice the current array ele from the array
 };
 
 // 28. Return the sum of all even numbers in an object containing nested objects.
