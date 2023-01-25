@@ -334,12 +334,12 @@ var nestedEvenSum = function(obj) {
 var flatten = function(arrays) {
 };
 
-// 30. Given a string, return an object containing tallies of each letter.
+//* 30. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
 var letterTally = function(str, obj) {
 };
 
-// 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
+//* 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
 // elements they should be replaced with a single copy of the element. The order of the
 // elements should not be changed.
 // Example: compress([1, 2, 2, 3, 4, 4, 5, 5, 5]) // [1, 2, 3, 4, 5]
@@ -353,20 +353,20 @@ var compress = function(list) {
 var augmentElements = function(array, aug) {
 };
 
-// 33. Reduce a series of zeroes to a single 0.
+//* 33. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
 var minimizeZeroes = function(array) {
 };
 
-// 34. Alternate the numbers in an array between positive and negative regardless of
+//* 34. Alternate the numbers in an array between positive and negative regardless of
 // their original sign.  The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function(array) {
 };
 
-// 35. Given a string, return a string with digits converted to their word equivalent.
+//* 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
 var numToText = function(str) {
