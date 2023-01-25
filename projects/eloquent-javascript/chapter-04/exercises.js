@@ -84,15 +84,22 @@ function listToArray(object, output = []) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function prepend(number, list) {
-
+  return list = {value: number, rest: list}; // return list as an object containing the keys of value and rest, where the value is the number argued, and rest is the initial list
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function nth(number) {
-
+function nth(list, i, counter = 0) { // add a counter to the function params to keep track of recursive loops
+  if(i < 0) { // if i is less than 0
+    return undefined; // return undefined
+  }
+  if(counter === i) { // if the counter equals i
+    return list.value; // return the current list value
+  }
+  counter++; // increment the counter to keep track of each recursive call
+  return nth(list.rest, i, counter); // return the function on list.rest, i, and the counter
 }
 
 ////////////////////////////////////////////////////////////////////////////////
