@@ -276,7 +276,16 @@ var replaceKeysInObj = function(obj, key, newKey) {
 // Example:  0, 1, 1, 2, 3, 5, 8, 13, 21, 34.....
 // fibonacci(5);  // [0, 1, 1, 2, 3, 5]
 // Note:  The 0 is not counted.
-var fibonacci = function(n) {
+var fibbonacci = function(n, output = [0, 1], sequence = [0]) {
+  if(n < 0) { 
+    return null; 
+  }
+  if(n === 0) { 
+    return sequence; 
+  }
+  sequence.push(output[1]);
+  output.push(output[0] + output[1]);
+  return fibbonacci(n - 1, output.slice(1), sequence);
 };
 
 // 25. Return the Fibonacci number located at index n of the Fibonacci sequence.
