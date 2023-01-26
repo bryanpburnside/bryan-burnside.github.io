@@ -37,11 +37,11 @@ function sum(array) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function reverseArray(array) {
-  let newArray = [];
-  for(let i = array.length - 1; i >= 0; i--) {
-    newArray.push(array[i]);
+  let newArray = []; // create a new array for the reverse array elements
+  for(let i = array.length - 1; i >= 0; i--) { // loop in reverse through the array
+    newArray.push(array[i]); // push the elements to the new array
   }
-  return newArray;
+  return newArray; // return the new array
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -107,7 +107,29 @@ function nth(list, i, counter = 0) { // add a counter to the function params to 
 ////////////////////////////////////////////////////////////////////////////////
 
 function deepEqual(x, y) {
-
+  // determine if x && y are both not objects
+  if(typeof x !== 'object' && typeof y !== 'object') {
+    return x === y;
+  }
+  // determine if either x or y are not objects
+  if(typeof x !== 'object' || typeof y !== 'object') {
+    return false;
+  }
+  // create arrays of each item's keys
+  let xKeys = Object.keys(x); // ['a']
+  let yKeys = Object.keys(y); // ['a']
+  // determine if the lengths aren't equal
+  if(xKeys.length !== yKeys.length) {
+    return false;
+  }
+  // iterate through the xKeys
+  for(let i = 0; i < xKeys.length; i++) {
+    // if the keys dont match or the values at the keys don't match
+    if(!yKeys.includes(xKeys[i]) || !deepEqual(x[xKeys[i]], y[xKeys[i]])) {
+      return false;
+    }
+  }
+  return true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
