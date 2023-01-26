@@ -188,33 +188,33 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2, output = '') {
-  if(str1.length === 0 && str2 === output + str1) {
-    return true;
+  if(str1.length === 0 && str2 === output + str1) { // if str1's length is zero and str2 equals the output plus str1
+    return true; // return true
   }
-  if(str1.length === 0 && str2 !== output) {
-    return false;
+  if(str1.length === 0 && str2 !== output) { // if str1's length equals zero and str2 does not equal the output
+    return false; // return false
   }
-  output += str1[0];
-  return compareStr(str1.slice(1), str2, output);
+  output += str1[0]; // output += str1's current value
+  return compareStr(str1.slice(1), str2, output); // return the function but slice the first value from str1 each time
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
 var createArray = function(str, output = []){
-  if(str.length === 0) {
-    return output;
+  if(str.length === 0) { // is str equals zero
+    return output; // return output
   }
-  output.push(str[0]);
-  return createArray(str.slice(1), output)
+  output.push(str[0]); // push the current string value to output
+  return createArray(str.slice(1), output) // return the function but slice the current value from the string
 };
 
 // 17. Reverse the order of an array
 var reverseArr = function (array, output = []) {
-  if(array.length === 0) {
-    return output;
+  if(array.length === 0) { //if the arrays length is zero
+    return output; // return the output
   }
-  output.push(array[array.length - 1]);
-  return reverseArr(array.slice(0, array.length - 1), output);
+  output.push(array[array.length - 1]); // push the last element of the array to the output
+  return reverseArr(array.slice(0, array.length - 1), output); // return the function but slice the last element from the array
 };
 
 // 18. Create a new array with a given value and length.
@@ -276,7 +276,7 @@ var replaceKeysInObj = function(obj, key, newKey) {
 // Example:  0, 1, 1, 2, 3, 5, 8, 13, 21, 34.....
 // fibonacci(5);  // [0, 1, 1, 2, 3, 5]
 // Note:  The 0 is not counted.
-var fibbonacci = function(n, output = [0, 1], sequence = [0]) {
+var fibonacci = function(n, output = [0, 1], sequence = [0]) {
   if(n < 0) { 
     return null; 
   }
@@ -285,7 +285,7 @@ var fibbonacci = function(n, output = [0, 1], sequence = [0]) {
   }
   sequence.push(output[1]);
   output.push(output[0] + output[1]);
-  return fibbonacci(n - 1, output.slice(1), sequence);
+  return fibonacci(n - 1, output.slice(1), sequence);
 };
 
 // 25. Return the Fibonacci number located at index n of the Fibonacci sequence.
@@ -400,36 +400,36 @@ var minimizeZeroes = function(array, output = []) {
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function(array, output = []) {
-  if(array.length === 0) {
-    return output;
+  if(array.length === 0) { // if the array length is zero
+    return output; // return the output
   }
-  if(array[0] > 0) {
-    output.push(array[0]);
-  } else if(array[0] < 0) {
-    output.push(-array[0]);
+  if(array[0] > 0) { // if the current array element is pos
+    output.push(array[0]); // push it to the output
+  } else if(array[0] < 0) { // else if it is neg
+    output.push(-array[0]); // push the opposite to the output
   }
-  if(array[1] > 0) {
-    output.push(-array[1])
-  } else {
-    output.push(array[1])
+  if(array[1] > 0) { // if the second array element is pos
+    output.push(-array[1]) // push it to the output as neg
+  } else { // otherwise
+    output.push(array[1]) // push the array element
   }
-  return alternateSign(array.slice(2), output);
+  return alternateSign(array.slice(2), output); // return the function but slice the current two elements from the array each recursive loop
 };
 
 //* 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
-var numToText = function(str, ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'], output = []) {
-  if(str.length === 0) {
-    return output.join("");
+var numToText = function(str, ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'], output = []) { // add an output array, and an array of ones digits strings
+  if(str.length === 0) { // base: if the length of the str is zero
+    return output.join(""); // return the output array joined
   }
-  if(isNaN(parseFloat(str[0]))) {
-    output.push(str[0]);
+  if(isNaN(parseFloat(str[0]))) { // if the current string value is not a number
+    output.push(str[0]); // push the current string value to the output array
   }
-  if(typeof (str[0] * 1) === 'number') {
-    output.push(ones[str[0]])
+  if(!isNaN(parseFloat(str[0]))) { // if the current string value is a number
+    output.push(ones[str[0]]) // push the number in the ones array at the index of the current string value
   }
-  return numToText(str.slice(1), ones, output);
+  return numToText(str.slice(1), ones, output); // return the function recursively, but slice the first value from the string
 };
 
 // *** EXTRA CREDIT ***
