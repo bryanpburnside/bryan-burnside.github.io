@@ -63,14 +63,72 @@ console.log(2 % 2) // prints => 0 to the console
 
 // 3. Comparison Operators //
 
+// with comparison operators, we have access to greater than (>) and less than (<)
+let greaterThan = 1 > 0 ? true : false;
+console.log(greaterThan) // prints => true to the console (because 1 is greater than 0)
 
+let lessThan = 0 < 1 ? true : false;
+console.log(lessThan) // prints => true to the console (because 0 is less than 1)
 
+// we also have access to the equals (==) and strictly equals (===) operators
+// unstrict allows values like a number and a string of the same number to resolve to true
+let unstrict = 1 == '1' ? true : false;
+console.log(unstrict); // prints => true to the console
+
+// whereas strict does not consider values like a number and a string of the same number to be the same and resolves to false
+let strict = 1 === '1' ? true : false;
+console.log(strict); // prints => false to the console
+
+//if we replace the first equal sign of equals or strictly equals bang symbol (!=, !==), we can make conditions were one value does not equal (or does not strictly equal) another
+let doesNotEqual = 1 != '1' ? true : false
+console.log(doesNotEqual) // prints => false to the console (since one does equal the string of one under unstrict conditions)
+
+let doesNotEqualStrict = 1 !== '1' ? true : false
+console.log(doesNotEqualStrict) // prints => true to the console (since one DOES NOT strictly equal the string of one)
 // 4. Logical Operators //
 
+// let's take a look at the logical operators 'and' (&&) and 'or' (||)
 
+// the logical operator AND will check if BOTH conditions are true 
+let and = 1 < 2 && 2 > 3 ? true : false; // since the first condition AND the second condition are not BOTH true 
+console.log(and); // prints => false to the console 
+
+// the logical operator OR will check if EITHER condition is true 
+let or = 1 < 2 || 2 > 3 ? true : false; // since the first condition is true, it does not matter that the second condition is not 
+console.log(or); // prints => true to the console
+
+//the bang operator is also a logical operator, but we will discuss it in unary operators below
 
 // 5. Unary Operators //
 
+let one = 1; // let's declare a variable called one and assign it the value of the number one and see how it interacts with various unary operators
 
+// if we wanted the 'logical not' of one, we could use the bang operator
+console.log(!one); // prints => false to the console (since JavaScript will convert the value to it's opposite boolean)
+// here, we can use the bang operator to check if something does not equal one
+
+// the bang (or logical not) should not be confused with negative, which can be accessed by implementing the - sign
+console.log(-one); // prints => -1 to the console
+
+// typeof, a type operator can be used to check a value for its type
+console.log(typeof one); // prints => 'number' to the console
+// here, we can see that typeof's value is a string representing the type of value that 'one' is, a number
 
 // 6. Ternary Operator //
+
+//let's say we wanted to write a function that checked if a was less than b
+//within that function we could have an if-statement that checks if a is less than b and returns true if it is, and otherwise it returns false
+
+let aLessThanB = function(a, b) {
+    if(a < b) {
+        return true; 
+    } else { 
+        return false; 
+    }
+}
+console.log(aLessThanB(1, 2)); // prints => true to the console
+
+// we could also write this same function using ternary operators
+
+let aLessThanBTernary = function(a, b) { return 1 < 2 ? true : false; }
+console.log(aLessThanBTernary(1, 2)); // prints => true to the console
