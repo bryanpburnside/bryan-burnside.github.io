@@ -2,7 +2,7 @@
  * LOOPS:
  * 
  * 0. Loops are a form of control flow which allows us to run a piece of code multiple times, based on a given condition, until that condition is met.
- * Loops simplify the access and manipulation large datasets, and offer us a fast, useful way to repeatedly execute code. 
+ * Loops simplify the access and manipulation of large datasets and offer us a fast, useful way to repeatedly execute code. 
  * 
  * 1. While, For, and For-In Loops: While loops allow us to loop until a given condition is met. For-loops allow us to iterate over arrays and access their elements.
  * For-in loops allow us to iterate over objects, giving us access to their keys and values. 
@@ -20,13 +20,35 @@
 
 // 1. While, For, and For-In Loops //
 
+// While loops usually involve initializing a “count” variable
+var count = 0
+// We continue to loop until that variable meets the given condition
+while(count <= 3) {
+    console.log(count); // prints => 0, 1, 2, 3 to the console
+    count++ // tells the loop to continue until the count variable increments to 3
+}
 
+let cats = ['Fofi', 'Trout', 'Buster'];
+// For-loops involve three pieces of information, separated by semi-colons: initializing a variable, i, that acts as our start 
+// position, our loop condition, and our incrementer
+for(let i = 0; i < cats,length; i++) {
+    console.log(i); // prints => 0, 1, 2 to the console (the indexes of each element)
+    console.log(array[i]); // prints => 'Fofi', 'Trout', 'Buster' to the console (the array elements at each index)
+}
+
+// For-in loops allow us to iterate over objects, giving us access to their keys and values
+const object = {key: 'value'}
+
+for(let key in object) { // The for-in loop involves the initialization of a variable representing an object’s “key”, the word in, and an object.
+    console.log(key) // prints => 'key' to the console
+    console.log(object[key]) // prints => 'value' to the console
+}
 
 // 2. Loop Conditions (While) //
 
 // Loop Forwards to Ten //
 
-let count = 1;
+var count = 1;
 
 while(count <= 10) { // while count (1) is less than or equal to ten, begin looping
     console.log(count); // prints => 1-10 to the console
