@@ -1,8 +1,8 @@
 /**
- * CONTROL-FLOW:
+ * CONTROL FLOW:
  * 
- * 0. Control-flow in JavaScript, and all programming languages, is about how we go about controlling the flow of our
- * data. To direct this flow of data, we can utilize combining conditionals with if-statements, else-if statements,
+ * 0. Control flow in JavaScript, and all programming languages, is about how we go about controlling the flow of our
+ * data. To direct this flow of data, we can utilize combining conditionals with if statements, else-if statements,
  * else statements, and switch statements.
  * 
  * 1. If: We use if to run code if a condition we define is true.
@@ -22,9 +22,9 @@ let lessThanFive =  a => {
     }
 }
 console.log(lessThanFive(3)) // here we pass 3 in for a, and since 3 is less than five, true will print to the console
-// 2. Else-If //
 
-let letterGrade = number => { // so lets say we write a function to tell you your letter grade based on your number grade
+// 2. Else-If //
+let letterGrade = number => { // so let's say we write a function to tell you your letter grade based on your number grade
     if(number >= 90) { // if this condition resolves to true
         console.log('A'); // print => 'A' to the console
     } else if (number >= 80) { // else if this condition resolves to true
@@ -36,20 +36,19 @@ let letterGrade = number => { // so lets say we write a function to tell you you
     } else if (number < 60) // else if this condition resolves to true
         console.log('F'); // print => 'F' to the console
 }
-letterGrade(89); // let's call the function with the arguement of 89. the function will pass 89 into the if statement, and since 89 is less than 90, it will then get passed into the else-if, and since 89 >= 80, 'B' will print to the console
+letterGrade(89); // let's call the function with the argument of 89. the function will pass 89 into the if statement, and since 89 is less than 90, it will then get passed into the else-if, and since 89 >= 80, 'B' will print to the console
 
 // 3. Else //
-let groundIs = text => { // groundIs is a function that takes in a parameter, text
+let groundIs = text => { // groundIs is a function that takes in a parameter representing a text value
     if(text !== 'lava') { // if text does not equal 'lava'
         console.log('You are alive'); // print => 'You are alive' to the console
     } else { // else or otherwise
         console.log('You are dead'); // print => 'You are dead' to the console
     }
 }
-groundIs("lava") // let's call the function with the arguement of 'lava'. the function will pass 'lava' into the if statement, and since text DOES equal lava, the else statement will trigger and 'You are dead' will print to the console
+groundIs("lava") // let's call the function with the argument of 'lava'. the function will pass 'lava' into the if statement, and since text DOES equal lava, the else statement will trigger and 'You are dead' will print to the console
 
 // 4. Switch //
-
 let cat = "Tabby";
 switch (cat) {
     case "Tabby":
