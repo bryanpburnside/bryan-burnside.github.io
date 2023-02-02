@@ -116,28 +116,30 @@ var dogContestants = [...filterSpecies];
 
 // 5. 
 var dogsWithClasses = dogContestants.map(dog => {
+    let copy = Object.assign({}, dog)
     if(dog.weight > 20) {
-        dog.class = 'green';
-        return dog;
+        copy.class = 'green';
+        return copy;
     }
     if(dog.weight <= 10) {
-        dog.class = 'red';
-        return dog;
+        copy.class = 'red';
+        return copy;
     } else {
-        dog.class = 'yellow';
-        return dog;
+        copy.class = 'yellow';
+        return copy;
     }
 });
     
 
 
 // 6.
-var firstInClass = (topDogs, object = {}) => {
-    if(topDogs.length === 0) {
+var firstInClass = (array, object = {}) => {
+    if(array.length === 0) {
         return object;
     }
-    Object.assign(object, topDogs[0]);
-    return firstInClass(topDogs.slice(1), object);
+    // Object.assign(object, array[0]);
+    object = {...object, ...array[0]}
+    return firstInClass(array.slice(1), object);
 }
 
 
