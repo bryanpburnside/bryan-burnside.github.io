@@ -38,7 +38,7 @@ function declared() { // Here we declare a function called declared
     console.log('I exist');
 }
 
-declared() // Here we invoke (or call) the function, which will execute it's code block printing => 'I exist' to the console
+declared() // Here we invoke (or call) the function, which will execute its code block printing => 'I exist' to the console
 
 // 2. Parameters and Arguments //
 
@@ -73,11 +73,11 @@ let tag = function() { // Here we set a variable 'tag' to an anonymous function
 
 // 5. Inputs and Outputs //
 
-let thisFunctionResolvesToOne = function() { // Here, we declare a variable and set it's value to a function which resolves to 1
+let thisFunctionResolvesToOne = function() { // Here, we declare a variable and set its value to a function which resolves to 1
     return 1;
 }
 
-multiply(thisFunctionResolvesToOne(), 8); // We can pass this function expression are an argument into the multiply function we created earlier
+multiply(thisFunctionResolvesToOne(), 8); // We can pass this function expression as an argument into the multiply function we created earlier
 console.log(multiply(thisFunctionResolvesToOne(), 8)); // prints => 8 
 
 // 6. Scope //
@@ -85,10 +85,10 @@ console.log(multiply(thisFunctionResolvesToOne(), 8)); // prints => 8
 let globally = `I'm a globally scoped variable`
 
 function sameHere() { // the sameHere function is also globally scoped
-    let locally = 5; // but the variable, locally, is local or function scoped
+    let locally = 5; // but the variable 'locally' is local or function scoped
     console.log(locally); // prints => 5 to the console
     if(locally < 10) {
-        let blocked = 10; // the variable, blocked is block-scoped
+        let blocked = 10; // the variable 'blocked' is block-scoped
         console.log(blocked); // prints => 5 to the console
     } else {
         blocked = 5;
