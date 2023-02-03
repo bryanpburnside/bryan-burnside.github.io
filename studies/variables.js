@@ -47,6 +47,26 @@ const personB = { // const is useful in initializing variables representing coll
     age: 33
 }
 
+// Another difference between var vs let and const is scoping!
+// let and const are block scoped!
+
+if(1 < 2) {
+  let one = 1;
+}
+console.log(one); // ReferenceError: one is not defined
+
+if(2 > 1) {
+  const two = 2;
+}
+console.log(two); // ReferenceError: two is not defined
+
+// var is only scoped globally and to functions! 
+if(3 < 4) {
+  var three = 1;
+}
+
+console.log(three); // prints => 1 to the console
+
 //3. Hoisting //
 
 // var declarations get hoisted to the global scope with a default initialization of undefined when declared in all types of code blocks, except functions
