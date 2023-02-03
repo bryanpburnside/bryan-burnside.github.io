@@ -29,11 +29,19 @@ while(count <= 3) {
 }
 
 let cats = ['Fofi', 'Trout', 'Buster'];
-// For-loops involve three pieces of information, separated by semi-colons: initializing a variable, i, that acts as our start 
-// position, our loop condition, and our incrementer
-for(let i = 0; i < cats,length; i++) {
+// For-loops involve three pieces of information, separated by semi-colons: 
+// 1. A counting variable which defines when to start counting (usually declared as the letter i)
+// 2. A loop condition that defines when to stop the loop
+// 3. And an update statement that defines how to increment or decrement the counting sequence 
+
+for(let i = 0; i < cats.length; i++) { // Here, we loop forward through our array of cats 
     console.log(i); // prints => 0, 1, 2 to the console (the indexes of each element)
     console.log(array[i]); // prints => 'Fofi', 'Trout', 'Buster' to the console (the array elements at each index)
+}
+
+for(let i = cats.length - 1; i >= 0; i--) { // Here, we loop backwards through our array of cats
+    console.log(i); // prints => 2, 1, 0 to the console (the indexes of each element)
+    console.log(array[i]); // prints => 'Buster', 'Trout', 'Fofi' to the console (the array elements at each index)
 }
 
 // For-in loops allow us to iterate over objects, giving us access to their keys and values
