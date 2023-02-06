@@ -156,8 +156,8 @@ function unique(array) {
 module.exports.unique = unique
 
 /**
- * filter: Designed to loop over an array and push values to a new array,
- * if they are true, then return the new array.
+ * filter: Designed to loop over an array, pass values of the array to a test function, 
+ * which tests if they meet a condition, and (if true) push values to a new array, then return the new array.
  * 
  * @param {Array} collection: The collection over which to iterate.
  * @param {Function} action: The Function to be applied to each value in the 
@@ -174,8 +174,8 @@ function filter(array, test) {
 module.exports.filter = filter
 
 /**
- * reject: Designed to loop over an array and push values to a new array,
- * if they are false, then return the new array.
+ * reject: Designed to loop over an array, pass values of the array to a test function, 
+ * which tests if they meet a condition, and (if false) push values to a new array, then return the new array.
  * 
  * @param {Array} collection: The collection over which to iterate.
  * @param {Function} action: The Function to be applied to each value in the 
@@ -238,23 +238,23 @@ function map(collection, callback) {
 module.exports.map = map
 
 /**
- * pluck: Designed to loop over an array of objects, and add the values of the
- * objects properties to a new array, then returns the new array.
- * @param {Array or Object} collection: The collection over which to iterate.
- * @param {Property}: The property of the object
+ * pluck: Designed to iterate over an array of objects, pluck the values of a
+ * target property for each object and push them to a new array, then return the new array.
+ * @param {Array of Objects} collection: The collection over which to iterate.
+ * @param {Property}: The object property we want the values of
  * @returns {Array}: Returns new array
  */
 
 function pluck(array, property) {
-    let plucked = array.map(function(array) { //loops through the array
-       return array[property]; // adds property values to new array
+    let plucked = array.map(function(array) { 
+       return array[property];
     })
-    return plucked; // return new array
+    return plucked;
 }
 module.exports.pluck = pluck
 
 /**
- * every: Designed to loop over a collection, Array or Object, and tests that all elements
+ * every: Designed to loop over a collection, Array or Object, and use a callback function to test that all elements
  * in the function are true or false. If any are false, it returns false, otherwise it returns true.
  * @param {Array or Object} collection: The collection over which to iterate.
  * @param {Function} action: The Function to be applied to each value in the collection.
@@ -297,7 +297,7 @@ function every(collection, callback) {
 module.exports.every = every
 
 /**
- * some: Designed to loop over a collection, Array or Object, and tests that all elements
+ * some: Designed to loop over a collection, Array or Object, and use a callback function to test that all elements
  * in the function are true or false. If any are true, it returns true, otherwise it returns false.
  * @param {Array or Object} collection: The collection over which to iterate.
  * @param {Function} action: The Function to be applied to each value in the collection.
@@ -339,13 +339,12 @@ function some(collection, callback) {
 module.exports.some = some
 
 /**
- * reduce: Reduce takes a function that loops through an array and 
- * builds a value by repeatedly taking a single element
- * from the array and combining it with the current value.
+ * reduce: Reduce loops through an array and repeatedly invokes a callback function
+ * to accumulate a single value return defined by a seed value (or first array element if no seed passed).
  * @param {Array} collection: The collection over which to iterate.
  * @param {Function} action: The Function to be applied to each value in the collection.
  * @param {Any Value}: A seed value / accumulator 
- * @returns {Any Value}: Returns accumulated value of seed, or a numeric value if no seed is given
+ * @returns {Any Value}: Returns accumulated value of seed, or first array element if no seed is passed
  */
 function reduce(array, callback, seed) {
     let result; 
